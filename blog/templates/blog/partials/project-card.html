@@ -1,0 +1,35 @@
+{% load static %}
+{% load jalali_filter %}  
+<div class="bg-white shadow-box5 rounded-[8px] transition duration-100 hover:shadow-box3 project-card-equal">
+  <div class="course-thumb h-[297px] rounded-t-[8px] relative">
+    {% if project.image %}
+      <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover rounded-t-[8px]" />
+    {% else %}
+      <img src="{% static 'assets/images/all-img/veladatZ.jpg' %}" alt="" class="w-full h-full object-cover rounded-t-[8px]" />
+    {% endif %}
+  </div>
+  <div class="course-content p-8">
+    <div>
+      <h4 class="text-xl mb-5 font-bold">
+        <a href="{% url 'blog:project_single' project.slug %}" class="hover:text-primary transition duration-150">
+          {{ project.title }}
+        </a>
+      </h4>
+      <ul class="list space-y-3 mb-6">
+        {% if project.event_date %}
+          <li class="flex space-x-2">
+            <span class="text-lg text-secondary"><iconify-icon icon="heroicons:calendar-days"></iconify-icon></span>
+            <span>{{ project.event_date|jdate:"j F Y"   }}</span>
+          </li>
+        {% endif %}
+        {% if project.location %}
+          <li class="flex space-x-2">
+            <span class="text-lg text-secondary"><iconify-icon icon="heroicons:map-pin"></iconify-icon></span>
+            <span>{{ project.location }}</span>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+    <a href="{% url 'blog:project_single' project.slug %}" class="btn px-8 py-[11px] bg-black text-white hover:bg-primary self-start">جزئیات برنامه</a>
+  </div>
+</div>

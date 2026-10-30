@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 560 170"
+     role="img"
+     aria-label="مدرسه علمیه حضرت مریم(س)">
+  <title>مدرسه علمیه حضرت مریم(س)</title>
+
+  <text x="280" y="62"
+        text-anchor="middle"
+        direction="rtl"
+        unicode-bidi="plaintext"
+        font-family="Vazirmatn, Tahoma, Arial, sans-serif"
+        font-size="34"
+        font-weight="500"
+        letter-spacing="0">
+    مدرسه علمیه
+  </text>
+
+  <text x="280" y="120"
+        text-anchor="middle"
+        direction="rtl"
+        unicode-bidi="plaintext"
+        font-family="Vazirmatn, Tahoma, Arial, sans-serif"
+        font-size="46"
+        font-weight="700"
+        letter-spacing="0">
+    حضرت مریم(س)
+  </text>
+</svg>

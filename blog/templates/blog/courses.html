@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} آشیانه جوان {% endblock %}
+
+{% block content %}
+
+  <div class="breadcrumbs section-padding bg-cover bg-center bg-no-repeat"
+    style="background-image: url('{% static "assets/images/all-img/bred4.png" %}');">
+    <div class="container text-center">
+      <h2>بنیاد علمی و فرهنگی آشیانه جوان</h2>
+      <nav>
+        <ol class="flex items-center justify-center space-x-3">
+          <li class="breadcrumb-item ml-2">
+            <a href="{% url 'blog:home' %}">صفحه اصلی</a>
+          </li>
+          <li class="breadcrumb-item">-</li>
+          <li class="text-primary">آشیانه جوان</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="about-area section-padding-top pb-12">
+    <div class="container">
+      <div class="grid grid-cols-12 gap-10">
+        <div class="xl:col-span-7 lg:col-span-6 col-span-12">
+          <img src="{% static 'assets/images/all-img/Houze3.png' %}" alt="" />
+        </div>
+        <div class="xl:col-span-5 lg:col-span-6 col-span-12">
+          <div class="mini-title">درباره بنیاد</div>
+          <h4 class="column-title">
+            با ما برای
+            <span class="shape-bg"> آینده‌ ای بهتر </span>
+            قدم بردار
+          </h4>
+          <div class="mb-8">
+            بنیاد علمی و فرهنگی آشیانه جوان، زیرمجموعه مدرسه علمیه حضرت مریم (س)، با هدف آموزش مهارت‌های کاربردی و آینده‌ساز برای نسل جوان افغانستان فعالیت می‌کند.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="nav-tab-wrapper tabs section-padding">
+    <div class="container">
+      <div class="flex items-center justify-between mb-14 gap-4 flex-wrap">
+        <div class="text-lg text-gray-600">
+          نمایش {{ courses|length }} دوره از {{ courses.paginator.count }}
+        </div>
+        <div class="min-w-[272px]">
+          <form method="get" action="{% url 'blog:courses' %}">
+            <select name="category" onchange="this.form.submit()"
+              class="w-full h-[54px] border border-gray rounded-md px-4 bg-white cursor-pointer focus:outline-none focus:ring-0 text-center leading-[54px] appearance-none">
+              <option value="">همه دسته‌ها</option>
+              {% for cat in categories %}
+                <option value="{{ cat.slug }}" {% if current_category and current_category.id == cat.id %}selected{% endif %}>
+                  {{ cat.name }}
+                </option>
+              {% endfor %}
+            </select>
+          </form>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
+        {% for course in courses %}
+          <div class="w-full">
+            {% include 'blog/partials/course-card.html' with course=course %}
+          </div>
+        {% empty %}
+          <div class="col-span-3 text-center py-10">
+            <p>هنوز دوره‌ای ثبت نشده است.</p>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if courses.has_other_pages %}
+        <div class="pagination mt-14">
+          <ul class="flex justify-center space-x-3">
+            {% if courses.has_previous %}
+              <li class="inline-flex">
+                <a href="?page={{ courses.previous_page_number }}" class="flex w-12 h-12 flex-col items-center justify-center bg-[#ECECEC] rounded font-semibold hover:bg-primary hover:text-white transition">
+                  <iconify-icon icon="heroicons:chevron-double-right-20-solid" class="text-2xl"></iconify-icon>
+                </a>
+              </li>
+            {% endif %}
+
+            {% for num in courses.paginator.page_range %}
+              {% if courses.number == num %}
+                <li class="inline-flex">
+                  <span class="flex w-12 h-12 flex-col items-center justify-center bg-primary text-white rounded font-semibold">{{ num }}</span>
+                </li>
+              {% else %}
+                <li class="inline-flex">
+                  <a href="?page={{ num }}" class="flex w-12 h-12 flex-col items-center justify-center bg-[#ECECEC] rounded font-semibold hover:bg-primary hover:text-white transition">{{ num }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+
+            {% if courses.has_next %}
+              <li class="inline-flex">
+                <a href="?page={{ courses.next_page_number }}" class="flex w-12 h-12 flex-col items-center justify-center bg-[#ECECEC] rounded font-semibold hover:bg-primary hover:text-white transition">
+                  <iconify-icon icon="heroicons:chevron-double-left-20-solid" class="text-2xl"></iconify-icon>
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock %}

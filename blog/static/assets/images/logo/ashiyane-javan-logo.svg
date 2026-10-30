@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="720" height="180" viewBox="0 0 720 180">
+  <title>بنیاد علمی فرهنگی آشیانه جوان</title>
+  <desc>لوگوی نوشتاری با پس‌زمینه شفاف و متن مشکی با فونت وزیرمتن</desc>
+
+  <text x="360" y="72"
+        text-anchor="middle"
+        direction="rtl"
+        unicode-bidi="plaintext"
+        font-family="Vazirmatn, Vazir, sans-serif"
+        font-size="38"
+        font-weight="500"
+        fill="#000000">بنیاد علمی فرهنگی</text>
+
+  <text x="360" y="135"
+        text-anchor="middle"
+        direction="rtl"
+        unicode-bidi="plaintext"
+        font-family="Vazirmatn, Vazir, sans-serif"
+        font-size="54"
+        font-weight="700"
+        fill="#000000">آشیانه جوان</text>
+</svg>

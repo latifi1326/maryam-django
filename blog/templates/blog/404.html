@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} صفحه یافت نشد {% endblock %}
+
+{% block content %}
+
+  <div class="min-h-screen bg-[url('../images/all-img/404-bg.png')] bg-cover bg-no-repeat bg-center">
+    <div class="max-w-[570px] mx-auto flex flex-col items-center text-center justify-center min-h-screen px-4">
+      <img src="{% static 'assets/images/all-img/404.svg' %}" alt="" class="mb-14" />
+      <h2 class="mb-6">صفحه مورد نظر یافت نشد</h2>
+      <div class="mb-10">
+        متأسفانه صفحه‌ای که به دنبال آن هستید وجود ندارد یا حذف شده است. لطفاً از طریق منو به صفحه اصلی بازگردید.
+      </div>
+      <a href="{% url 'blog:home' %}" class="btn btn-primary">بازگشت به صفحه اصلی</a>
+    </div>
+  </div>
+
+{% endblock %}

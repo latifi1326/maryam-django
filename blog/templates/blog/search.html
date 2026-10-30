@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} نتایج جستجو: {{ query }} {% endblock %}
+
+{% block content %}
+
+  <div class="breadcrumbs section-padding bg-[url('../images/all-img/bred.png')] bg-cover bg-center bg-no-repeat">
+    <div class="container text-center">
+      <h2>نتایج جستجو</h2>
+      <nav>
+        <ol class="flex items-center justify-center space-x-3">
+          <li class="breadcrumb-item"><a href="{% url 'blog:home' %}">صفحه اصلی</a></li>
+          <li class="breadcrumb-item">-</li>
+          <li class="text-primary">جستجو</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="nav-tab-wrapper tabs section-padding">
+    <div class="container">
+
+      <div class="text-center mb-12">
+        <p class="text-lg">
+          نتایج برای: <span class="text-primary font-bold">"{{ query }}"</span>
+        </p>
+        <p class="text-gray-500 mt-2">
+          {{ posts|length }} مطلب، {{ projects|length }} برنامه، {{ courses|length }} دوره پیدا شد
+        </p>
+      </div>
+
+      {% if posts %}
+        <div class="mb-14">
+          <h3 class="text-2xl font-bold mb-8">مطالب وبلاگ</h3>
+          <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
+            {% for post in posts %}
+              <div class="w-full">
+                {% include 'blog/partials/blog-card.html' with post=post %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if courses %}
+        <div class="mb-14">
+          <h3 class="text-2xl font-bold mb-8">دوره‌های آشیانه جوان</h3>
+          <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
+            {% for course in courses %}
+              <div class="w-full">
+                {% include 'blog/partials/course-card.html' with course=course %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if projects %}
+        <div class="mb-14">
+          <h3 class="text-2xl font-bold mb-8">برنامه‌ها و مناسبت‌ها</h3>
+          <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
+            {% for project in projects %}
+              <div class="w-full">
+                {% include 'blog/partials/project-card.html' with project=project %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+
+{% endblock %}

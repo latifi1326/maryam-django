@@ -1,0 +1,326 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} درباره ما - مدرسه علمیه حضرت مریم (س) {% endblock %}
+
+{% block content %}
+
+  <div class="breadcrumbs section-padding bg-cover bg-center bg-no-repeat"
+    style="background-image: url('{% static "assets/images/all-img/BackgroundH.png" %}');">
+    <div class="container text-center">
+      <h2>درباره مدرسه علمیه حضرت مریم (س)</h2>
+      <nav>
+        <ol class="flex items-center justify-center space-x-3">
+          <li class="breadcrumb-item">
+            <a href="{% url 'blog:home' %}">صفحه اصلی</a>
+          </li>
+          <li class="breadcrumb-item">-</li>
+          <li class="text-primary">درباره ما</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="about-area section-padding-top pb-12">
+    <div class="container">
+      <div class="grid grid-cols-12 gap-10">
+        <div class="xl:col-span-7 lg:col-span-6 col-span-12">
+          <img src="{% static 'assets/images/all-img/Houze3.png' %}" alt="" />
+        </div>
+        <div class="xl:col-span-5 lg:col-span-6 col-span-12">
+          <div class="mini-title">درباره ما</div>
+          <h4 class="column-title">
+            بانوان فرهیخته،
+            <span class="shape-bg"> آینده‌سازان</span>
+            جامعه اسلامی
+          </h4>
+          <div class="mb-8">
+            حوزه علمیه حضرت مریم (س) شعبه قم، از سال ۱۳۹۴ با هدف تربیت بانوان متعهد و فرهیخته، بستری برای رشد علمی، فرهنگی و تربیتی بانوان افغانستانی فراهم کرده است. این مدرسه با تکیه بر معارف قرآن و اهل بیت (ع)، در مسیر فهم، تبلیغ و تبیین ارزش‌های دینی گام برمی‌دارد.
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-area bg-[url('../images/all-img/section-bg-1.png')] bg-cover bg-no-repeat bg-center section-padding">
+    <div class="container">
+      <div class="text-center">
+        <div class="mini-title">مسیرهای ما</div>
+        <div class="column-title">
+          با بخش‌های
+          <span class="shape-bg">مدرسه</span>
+          بیشتر آشنا شوید
+        </div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 pt-10">
+        
+        <!-- کارت اول: حوزه علمیه -->
+        <div class="flex flex-col bg-white shadow-box rounded-[8px] p-10 transition duration-150">
+          <div class="h-[72px] w-[72px] rounded-full flex flex-col items-center justify-center text-secondary bg-green-paste mb-8 text-5xl transition duration-150">
+            <iconify-icon icon="ph:student"></iconify-icon>
+          </div>
+          <h4 class="lg:text-2xl text-[22px] leading-[30px] mb-4 text-black font-bold">
+            حوزه علمیه
+          </h4>
+          <p class="text-gray-600 mb-8 flex-1">
+            بستری برای تربیت بانوان متعهد و فرهیخته، با تکیه بر آموزش تخصصی معارف اسلامی و برنامه‌های فرهنگی.
+          </p>
+          <!-- دکمه با هاور اختصاصی -->
+          <a href="{% url 'blog:home' %}" class="inline-block bg-white text-primary font-semibold px-6 py-3 rounded-md border border-primary hover:bg-primary hover:text-white transition duration-150 mt-auto w-max">
+            آشنایی با حوزه
+          </a>
+        </div>
+  
+        <!-- کارت دوم: آشیانه جوان -->
+        <div class="flex flex-col bg-white shadow-box rounded-[8px] p-10 transition duration-150">
+          <div class="h-[72px] w-[72px] rounded-full flex flex-col items-center justify-center text-secondary bg-green-paste mb-8 text-5xl transition duration-150">
+            <iconify-icon icon="ph:leaf"></iconify-icon>
+          </div>
+          <h4 class="lg:text-2xl text-[22px] leading-[30px] mb-4 text-black font-bold">
+            آشیانه جوان
+          </h4>
+          <p class="text-gray-600 mb-8 flex-1">
+            بنیاد علمی و فرهنگی ویژه نسل جوان، با هدف آموزش مهارت‌های کاربردی و آینده‌ساز برای دختران افغانستان.
+          </p>
+          <!-- دکمه با هاور اختصاصی -->
+          <a href="{% url 'blog:courses' %}" class="inline-block bg-white text-primary font-semibold px-6 py-3 rounded-md border border-primary hover:bg-primary hover:text-white transition duration-150 mt-auto w-max">
+            مشاهده دوره‌ها
+          </a>
+        </div>
+  
+        <!-- کارت سوم: هیئت حضرت خدیجه -->
+        <div class="flex flex-col bg-white shadow-box rounded-[8px] p-10 transition duration-150">
+          <div class="h-[72px] w-[72px] rounded-full flex flex-col items-center justify-center text-secondary bg-green-paste mb-8 text-5xl transition duration-150">
+            <iconify-icon icon="ph:heart"></iconify-icon>
+          </div>
+          <h4 class="lg:text-2xl text-[22px] leading-[30px] mb-4 text-black font-bold">
+            هیئت حضرت خدیجه (س)
+          </h4>
+          <p class="text-gray-600 mb-8 flex-1">
+            محفل بانوان مهدوی و نسل جوان، با برگزاری جلسات هفتگی، برنامه‌های فرهنگی و تربیتی در پرتو سیره حضرت خدیجه (س).
+          </p>
+          <!-- دکمه با هاور اختصاصی -->
+          <a href="{% url 'blog:mosque' %}" class="inline-block bg-white text-primary font-semibold px-6 py-3 rounded-md border border-primary hover:bg-primary hover:text-white transition duration-150 mt-auto w-max">
+            آشنایی با هیئت
+          </a>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <div class="section-padding">
+    <div class="container">
+      <div class="text-center">
+        <div class="mini-title">دستاوردهای مدرسه</div>
+        <div class="column-title">
+          افتخارات و
+          <span class="shape-bg">دستاوردهای ما</span>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px] pt-10">
+        <div class="bg-white shadow-box7 text-center pt-[64px] pb-8 px-[50px] rounded-[8px] relative my-4">
+          <img src="{% static 'assets/images/icon/counter-1.svg' %}" alt="" class="absolute left-1/2 -translate-x-1/2 -top-10" />
+          <h4 class="text-[44px] leading-[66px] text-black font-bold mb-1">
+            <span class="counter">1500</span>+
+          </h4>
+          <p>طلبه و دانش‌آموخته</p>
+        </div>
+
+        <div class="bg-white shadow-box7 text-center pt-[64px] pb-8 px-[50px] rounded-[8px] relative my-4">
+          <img src="{% static 'assets/images/icon/counter-2.svg' %}" alt="" class="absolute left-1/2 -translate-x-1/2 -top-10" />
+          <h4 class="text-[44px] leading-[66px] text-black font-bold mb-1">
+            <span class="counter">300</span>+
+          </h4>
+          <p>برنامه و دوره آموزشی</p>
+        </div>
+
+        <div class="bg-white shadow-box7 text-center pt-[64px] pb-8 px-[50px] rounded-[8px] relative my-4">
+          <img src="{% static 'assets/images/icon/counter-3.svg' %}" alt="" class="absolute left-1/2 -translate-x-1/2 -top-10" />
+          <h4 class="text-[44px] leading-[66px] text-black font-bold mb-1">
+            <span class="counter">200</span>+
+          </h4>
+          <p>گواهی‌نامه صادرشده</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {# ---------- فرم ثبت تجربه طلاب ---------- #}
+  <div class="section-padding bg-[url('../images/all-img/section-bg-16.png')] bg-cover bg-no-repeat">
+    <div class="container">
+
+      {# پیام‌های سیستم #}
+      {% if messages %}
+        <div class="mb-8 max-w-3xl mx-auto">
+          {% for message in messages %}
+            <div class="p-4 rounded-md mb-2 text-center
+              {% if message.tags == 'success' %}bg-green-100 text-green-800 border border-green-300
+              {% elif message.tags == 'error' %}bg-red-100 text-red-800 border border-red-300
+              {% else %}bg-blue-100 text-blue-800 border border-blue-300{% endif %}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="grid grid-cols-12 lg:gap-10 gap-6 items-center">
+
+        {# تصویر سمت راست #}
+        <div class="xl:col-span-6 lg:col-span-6 col-span-12">
+          <img src="{% static 'assets/images/all-img/houze-roshana.jpg' %}" alt="" draggable="false" class="rounded-md" />
+        </div>
+
+        {# فرم سمت چپ #}
+        <div class="xl:col-span-6 lg:col-span-6 col-span-12">
+          <div class="mini-title">نظرات طلاب</div>
+          <h4 class="column-title mb-6">
+            تجربه‌ی خود را از
+            <span class="shape-bg">حضور در مدرسه</span>
+            با ما به اشتراک بگذارید
+          </h4>
+
+          <form method="post" enctype="multipart/form-data" class="space-y-4">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+              <div class="bg-red-100 text-red-800 p-3 rounded-md">
+                {{ form.non_field_errors }}
+              </div>
+            {% endif %}
+
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="block mb-2 font-semibold">{{ form.name.label }}</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                  <div class="text-red-600 text-sm mt-1">{{ form.name.errors }}</div>
+                {% endif %}
+              </div>
+              <div>
+                <label class="block mb-2 font-semibold">{{ form.role.label }}</label>
+                {{ form.role }}
+                {% if form.role.errors %}
+                  <div class="text-red-600 text-sm mt-1">{{ form.role.errors }}</div>
+                {% endif %}
+              </div>
+            </div>
+
+            <div>
+              <label class="block mb-2 font-semibold">{{ form.title.label }}</label>
+              {{ form.title }}
+              {% if form.title.errors %}
+                <div class="text-red-600 text-sm mt-1">{{ form.title.errors }}</div>
+              {% endif %}
+            </div>
+
+            <div>
+              <label class="block mb-2 font-semibold">{{ form.message.label }}</label>
+              {{ form.message }}
+              {% if form.message.errors %}
+                <div class="text-red-600 text-sm mt-1">{{ form.message.errors }}</div>
+              {% endif %}
+            </div>
+
+            <div>
+              <label class="block mb-2 font-semibold">{{ form.image.label }}</label>
+              {{ form.image }}
+              {% if form.image.errors %}
+                <div class="text-red-600 text-sm mt-1">{{ form.image.errors }}</div>
+              {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full text-center">
+              ثبت نظر
+            </button>
+
+            <p class="text-sm text-gray-500 text-center">
+              نظر شما پس از تأیید ادمین در سایت نمایش داده می‌شود. 🌸
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section-padding">
+    <div class="container">
+      <div class="text-center">
+        <div class="mini-title">کادر علمی و آموزشی</div>
+        <div class="column-title">
+          اساتید و همراهان
+          <span class="shape-bg">مدرسه</span>
+        </div>
+      </div>
+      <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7 pt-10">
+        {% for member in team_members %}
+          {% include 'blog/partials/team-card.html' with member=member %}
+        {% empty %}
+          <div class="col-span-4 text-center py-10">
+            <p>هنوز عضوی از تیم ثبت نشده است.</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="section-padding bg-white bg-[url('../images/all-img/section-bg-15.png')] bg-bottom bg-cover bg-no-repeat">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 grid-cols-1 gap-[30px]">
+        <div>
+          <div class="mini-title">پرسش‌های پرتکرار</div>
+          <div class="column-title">
+            سوالات
+            <span class="shape-bg">متداول</span>
+          </div>
+          <ul class="list accrodains space-y-[30px] lg:max-w-[470px]">
+            <li>
+              <button type="button" class="accrodain-button">
+                <span>شرایط ثبت‌نام در مدرسه چیست؟</span>
+                <span class="icon-pm"></span>
+              </button>
+              <div class="content" style="display: none;">
+                پاسخ: بانوان افغانستانی علاقه‌مند به تحصیل علوم دینی می‌توانند با ارائه مدارک هویتی و مدرک تحصیلی قبلی، در دوره‌های مدرسه ثبت‌نام کنند. برای اطلاعات بیشتر با شماره تماس مدرسه در ارتباط باشید.
+              </div>
+            </li>
+            <li>
+              <button type="button" class="accrodain-button">
+                <span>دوره‌ها به چه صورت برگزار می‌شوند؟</span>
+                <span class="icon-pm"></span>
+              </button>
+              <div class="content" style="display: none;">
+                پاسخ: دوره‌ها به دو صورت حضوری و آنلاین برگزار می‌شوند. کلاس‌های حضوری در محل مدرسه (قم، دورشهر) و کلاس‌های آنلاین از طریق بسترهای ارتباطی برگزار می‌شود.
+              </div>
+            </li>
+            <li>
+              <button type="button" class="accrodain-button">
+                <span>آیا بانوان غیرافغانستانی هم می‌توانند ثبت‌نام کنند؟</span>
+                <span class="icon-pm"></span>
+              </button>
+              <div class="content" style="display: none;">
+                پاسخ: مدرسه علمیه حضرت مریم (س) عمدتاً ویژه بانوان افغانستانی است، اما برای برخی دوره‌ها و برنامه‌های فرهنگی، پذیرش بانوان سایر ملیت‌ها نیز بر اساس ظرفیت امکان‌پذیر است.
+              </div>
+            </li>
+            <li>
+              <button type="button" class="accrodain-button">
+                <span>هزینه دوره‌ها چگونه است؟</span>
+                <span class="icon-pm"></span>
+              </button>
+              <div class="content" style="display: none;">
+                پاسخ: برخی دوره‌ها رایگان و برخی دیگر با هزینه نمادین برگزار می‌شوند. جزئیات هزینه هر دوره در صفحه «دوره‌ها» اعلام می‌شود.
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <img src="{% static 'assets/images/all-img/houzehBulding.png' %}" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

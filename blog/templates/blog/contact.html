@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} تماس با ما - مدرسه علمیه حضرت مریم (س) {% endblock %}
+
+{% block content %}
+
+  <div class="breadcrumbs section-padding bg-[url('../images/all-img/bred.png')] bg-cover bg-center bg-no-repeat">
+    <div class="container text-center">
+      <h2>تماس با مدرسه علمیه حضرت مریم (س)</h2>
+      <nav>
+        <ol class="flex items-center justify-center space-x-3">
+          <li class="breadcrumb-item"><a href="{% url 'blog:home' %}">صفحه اصلی</a></li>
+          <li class="breadcrumb-item">-</li>
+          <li class="text-primary">تماس با ما</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="nav-tab-wrapper tabs section-padding">
+    <div class="container">
+      <div class="grid grid-cols-12 gap-[30px]">
+        <div class="xl:col-span-5 lg:col-span-6 col-span-12">
+          <div class="mini-title">ارتباط با ما</div>
+          <h4 class="column-title">
+            با مدرسه
+            <span class="shape-bg"> در ارتباط باشید</span>
+          </h4>
+          <div>
+            برای ثبت‌نام در دوره‌ها، مشاوره آموزشی، همکاری علمی یا هرگونه سؤال و پیشنهاد، از راه‌های زیر با ما در ارتباط باشید. در اسرع وقت پاسخگوی شما خواهیم بود.
+          </div>
+          <ul class="list-item space-y-6 pt-8">
+            <li class="flex">
+              <div class="flex-none mr-6">
+                <img src="{% static 'assets/images/svg/mail.svg' %}" alt="" />
+              </div>
+              <div class="flex-1">
+                <h4 class="lg:text-xl text-lg mb-1">ایمیل ما :</h4>
+                <div>info@hazratmaryam.ir</div>
+              </div>
+            </li>
+            <li class="flex">
+              <div class="flex-none mr-6">
+                <img src="{% static 'assets/images/svg/call.svg' %}" alt="" />
+              </div>
+              <div class="flex-1">
+                <h4 class="lg:text-xl text-lg mb-1">تماس با ما:</h4>
+                <div>۰۹۱۹۳۵۱۶۸۶۵, ۰۹۰۲۶۰۹۱۲۷۴</div>
+              </div>
+            </li>
+            <li class="flex">
+              <div class="flex-none mr-6">
+                <img src="{% static 'assets/images/svg/map.svg' %}" alt="" />
+              </div>
+              <div class="flex-1">
+                <h4 class="lg:text-xl text-lg mb-1">آدرس دفتر:</h4>
+                <div>قم، خیابان دورشهر، کوچه ۹، پلاک ۱۶</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="xl:col-span-7 lg:col-span-6 col-span-12">
+          <div class="bg-white shadow-box7 p-8 rounded-md">
+
+            {% if messages %}
+              {% for msg in messages %}
+                <div class="mb-6 p-5 bg-green-50 border border-green-500 text-green-800 rounded-md text-center">
+                  <div class="flex items-center justify-center gap-2">
+                    <iconify-icon icon="heroicons:check-circle-20-solid" class="text-2xl"></iconify-icon>
+                    <span class="font-semibold">{{ msg }}</span>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endif %}
+
+            {% if form.errors %}
+              <div class="mb-6 p-5 bg-red-50 border border-red-500 text-red-800 rounded-md text-center">
+                <div class="flex items-center justify-center gap-2 mb-3">
+                  <iconify-icon icon="heroicons:exclamation-triangle-20-solid" class="text-2xl"></iconify-icon>
+                  <span class="font-semibold">لطفاً خطاهای زیر را برطرف کنید</span>
+                </div>
+                <ul class="space-y-1 text-sm">
+                  {% for field in form %}
+                    {% for error in field.errors %}
+                      <li>{{ field.label }}: {{ error }}</li>
+                    {% endfor %}
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+
+            <form method="post" action="">
+              {% csrf_token %}
+              <div class="md:grid-cols-2 grid grid-cols-1 gap-[30px] mt-6">
+                <div>{{ form.name }}</div>
+                <div>{{ form.email }}</div>
+                <div>{{ form.subject }}</div>
+                <div>{{ form.phone }}</div>
+                <div class="md:col-span-2 col-span-1">{{ form.message }}</div>
+              </div>
+              <button class="btn btn-primary mt-[30px]" type="submit">ارسال پیام</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

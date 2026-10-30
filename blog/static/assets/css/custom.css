@@ -1,0 +1,383 @@
+@import url(./Vazirmatn-FD-NL-font-face.css);
+
+html {
+  font-family: Vazirmatn FD NL;
+}
+
+.left-\[-60px\] { left: -60px; }
+#mrglft { margin-left: 0.75rem; }
+
+.hover-btn:hover + .hover-target,
+.hover-btn:focus + .hover-target,
+.hover-target:hover {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.hover-btn, .hover-target { transition: all 0.2s ease-in-out; }
+
+.grid-item .block {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-item .course-thumb { flex-shrink: 0; }
+
+.grid-item .course-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+[dir="rtl"] .space-x-1 > :not([hidden]) ~ :not([hidden]) { margin-right: 0.25rem; margin-left: 0; }
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) { margin-right: 0.5rem; margin-left: 0; }
+[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) { margin-right: 0.75rem; margin-left: 0; }
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) { margin-right: 1rem; margin-left: 0; }
+[dir="rtl"] .space-x-5 > :not([hidden]) ~ :not([hidden]) { margin-right: 1.25rem; margin-left: 0; }
+[dir="rtl"] .space-x-6 > :not([hidden]) ~ :not([hidden]) { margin-right: 1.5rem; margin-left: 0; }
+[dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]) { margin-right: 2rem; margin-left: 0; }
+[dir="rtl"] .space-x-\[80px\] > :not([hidden]) ~ :not([hidden]) { margin-right: 80px; margin-left: 0; }
+
+[dir="rtl"] .filter-list .ml-4 { margin-left: 1rem; margin-right: 0; }
+[dir="rtl"] .filter-list .last\:ml-0:last-child { margin-left: 0; }
+
+.prev-btn, .next-btn { transition: all 0.3s ease; }
+.prev-btn:hover, .next-btn:hover { background-color: #ff7e84 !important; color: #ffffff !important; }
+.prev-btn:hover iconify-icon, .next-btn:hover iconify-icon { color: #ffffff !important; }
+
+[dir="rtl"] .single-footer .ml-\[80px\] { margin-left: 80px; margin-right: 0; }
+
+.grid-item .course-content h4 { margin-bottom: 0; line-height: 1.5; }
+
+[dir="rtl"] .header-normal .mr-4 { margin-right: 1rem; margin-left: 0; }
+[dir="rtl"] .course-thumb .right-6 { right: 1.5rem; left: auto; }
+
+.openmobile-menu { left: -320px; right: auto; transition: all 0.2s ease; }
+.openmobile-menu.active-mobile-menu { left: 0; right: auto; }
+[dir="rtl"] .openmobile-menu .ml-10 { margin-left: 2.5rem; margin-right: 0; }
+
+[dir="rtl"] .mr-6 { margin-right: 1.5rem; margin-left: 0; }
+[dir="rtl"] .mr-10 { margin-right: 2.5rem; margin-left: 0; }
+[dir="rtl"] .mr-\[74px\] { margin-right: 74px; margin-left: 0; }
+[dir="rtl"] .ml-4 { margin-right: 0; margin-left: 1rem; }
+[dir="rtl"] .pr-\[10px\] { padding-right: 10px; padding-left: 0; }
+
+@media (max-width: 1024px) {
+  [dir="rtl"] .filter-list .ml-4 { margin-left: 0.75rem; }
+  [dir="rtl"] .single-footer .ml-\[80px\] { margin-left: 40px; }
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .filter-list .ml-4 { margin-left: 0.5rem; }
+  [dir="rtl"] .single-footer .ml-\[80px\] { margin-left: 20px; }
+  .grid-item .course-content { min-height: 80px; }
+}
+
+[dir="rtl"] .grid-item .course-content iconify-icon { margin-right: .5rem; margin-left: 0; }
+
+img { max-width: 100%; height: auto; }
+
+/* ==================== یکسان‌سازی ارتفاع کارت‌ها ==================== */
+
+.grid > .w-full { display: flex; height: 100%; }
+.grid > .w-full > div { width: 100%; }
+
+.project-card-equal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-card-equal .course-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.blog-card-equal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.blog-card-equal > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.blog-card-equal .course-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.course-card-equal .btn {
+  width: auto !important;
+  display: inline-block !important;
+  align-self: flex-start !important;
+}
+
+/* ==================== Hover Effect - Maryam ==================== */
+
+:root {
+  --maryam-primary: #A67C3D;
+}
+
+/* ==================== Hover Effect - Maryam ==================== */
+
+:root {
+  --maryam-primary: #A67C3D;
+}
+
+/* ============================================ */
+/* 1. آخرین رویدادهای حوزه (کارت‌های وبلاگ)      */
+/* ============================================ */
+
+/* عنوان - هاور روی خود عنوان */
+.blog-card-equal h4 {
+  transition: color 0.3s ease;
+  position: relative;
+  display: inline-block;
+  width: fit-content;       
+  max-width: 100%;   
+}
+
+.blog-card-equal h4:hover {
+  color: var(--maryam-primary) !important;
+}
+
+/* خط زیر عنوان */
+.blog-card-equal h4::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background: var(--maryam-primary);
+  transition: width 0.3s ease;
+}
+
+.blog-card-equal h4:hover::after {
+  width: 100%;
+}
+
+
+/* «مطالعه بیشتر» - هاور روی خودش */
+.blog-card-equal .blog-read-more,
+.blog-card-equal .course-content > a,
+.blog-card-equal .course-content > span {
+  transition: color 0.3s ease;
+  position: relative;
+  display: inline-block;
+  width: fit-content;/* ← جدید */
+}
+
+.blog-card-equal .blog-read-more:hover,
+.blog-card-equal .course-content > a:hover,
+.blog-card-equal .course-content > span:hover {
+  color: var(--maryam-primary) !important;
+}
+
+/* خط زیر «مطالعه بیشتر» */
+.blog-card-equal .blog-read-more::after,
+.blog-card-equal .course-content > a::after,
+.blog-card-equal .course-content > span::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background: var(--maryam-primary);
+  transition: width 0.3s ease;
+}
+
+.blog-card-equal .blog-read-more:hover::after,
+.blog-card-equal .course-content > a:hover::after,
+.blog-card-equal .course-content > span:hover::after {
+  width: 100%;
+}
+
+
+/* ============================================ */
+/* 2. مناسبت‌ها (کارت‌های پروژه)                 */
+/* ============================================ */
+
+/* عنوان - هاور روی عنوان، فقط رنگ */
+.project-card-equal h4 {
+  transition: color 0.3s ease;
+}
+
+.project-card-equal h4 a {
+  transition: color 0.3s ease;
+  position: relative;
+  display: inline-block;
+  width: fit-content;       
+  max-width: 100%; 
+
+}
+
+.project-card-equal h4:hover,
+.project-card-equal h4 a:hover {
+  color: var(--maryam-primary) !important;
+}
+
+/* بدون خط */
+.project-card-equal h4::after,
+.project-card-equal h4 a::after {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/*margin latest box in index*/
+.sm\:ml-6 { margin-left: 1.5rem !important; }
+
+/* ===== کارت مناسبت امروز / آیه امروز ===== */
+/* ===== کارت مناسبت امروز / آیه امروز ===== */
+.daily-section{
+  padding: 24px 0 0;
+}
+
+/* هم‌عرض شدن با بنر پایین (اگر بنر عرض دیگری دارد، این عدد را عوض کنید) */
+.daily-section .container{
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 40px;
+  max-width: 1300px;
+}
+
+.daily-card{
+  direction: rtl;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  background: #f8f7f5;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,.06);
+  min-height: 300px;
+}
+.daily-mandala{
+  position: absolute;
+  right: -70px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 260px;
+  color: #134e4a;
+  opacity: .06;
+  pointer-events: none;
+  line-height: 1;
+}
+.daily-ornament{
+  position: absolute;
+  right: 22px;
+  top: 56%;
+  width: 30px;
+  height: 30px;
+  color: #134e4a;
+  opacity: .55;
+}
+.daily-text{
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  padding: 36px 64px 36px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.daily-date{
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e9eeec;
+  color: #3f5f5b;
+  font-size: 14px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  margin-bottom: 26px;
+}
+.daily-date iconify-icon{ font-size: 20px; }
+.daily-content{ max-width: 540px; }
+.daily-label{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #134e4a;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.daily-label::after{
+  content: "";
+  width: 50px;
+  height: 1px;
+  background: #134e4a;
+  opacity: .45;
+}
+.daily-title{
+  color: #134e4a;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 2;
+  margin: 0 0 22px;
+}
+.daily-desc{
+  color: #4b5563;
+  font-size: 16px;
+  line-height: 2;
+  margin: 0 0 22px;
+}
+.daily-footer{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #6b7280;
+  font-size: 14px;
+}
+.daily-footer::before,
+.daily-footer::after{
+  content: "";
+  height: 1px;
+  background: #b08a4a;
+}
+.daily-footer::before{ width: 70px; }
+.daily-footer::after{ flex: 1; }
+
+.daily-media{
+  position: relative;
+  width: 50%;
+  flex-shrink: 0;
+}
+.daily-photo{
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 14px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  clip-path: url(#dailyCurve);
+}
+.daily-line{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media (max-width: 770px){
+  .daily-card{ flex-direction: column-reverse; }
+  .daily-text{ padding: 26px 22px; }
+  .daily-title{ font-size: 22px; }
+  .daily-media{ width: 100%; height: 220px; }
+  .daily-photo{ right: 0; clip-path: none; }
+  .daily-line, .daily-mandala, .daily-ornament{ display: none; }
+}

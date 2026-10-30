@@ -1,0 +1,232 @@
+{% load static %}
+<!doctype html>
+
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="حوزه علمیه حضرت مریم (س) ویژه بانوان افغانستانی در قم" />
+  <title>{% block title %} مدرسه علمیه حضرت مریم (س) {% endblock %}</title>
+  <link rel="icon" type="image/png" href="{% static 'assets/images/logo/faviconlogo.png' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/rt-plugins.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/app.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+  {% block link %}{% endblock %}
+</head>
+
+<body class="font-medium text-gray text-lg leading-[27px]">
+
+  <!-----------------------------------header---------------------------------------------->
+  <header class="site-header header-normal top-0 bg-white z-[9] rt-sticky">
+    <div class="main-header py-8">
+      <div class="container">
+        <div class="flex items-center justify-between flex-wrap">
+          <a href="{% url 'blog:home' %}" class="brand-logo flex-none lg:ml-10 md:ml-0">
+            <img src="{% static 'assets/images/logo/madrese-elmieh-hazrat-maryam.svg' %}" alt="مدرسه علمیه حضرت مریم س" />
+          </a>
+          <div class="flex items-center flex-1">
+            <div class="flex-1 main-menu lg:relative xl:ml-[74px] ml-6">
+              <ul>
+                <li>
+                  <a href="{% url 'blog:home' %}">خانه</a>
+                </li>
+                <li>
+                  <a href="{% url 'blog:about' %}">درباره ما</a>
+                </li>
+                <li>
+                  <a href="{% url 'blog:blog' %}">وبلاگ</a>
+                </li>
+                <li>
+                  <a href="{% url 'blog:courses' %}">آشیانه جوان</a>
+                </li>
+                <li>
+                  <a href="{% url 'blog:mosque' %}">هیئت</a>
+                </li>
+              </ul>
+              <div class="lg:block hidden">
+                <form method="get" action="{% url 'blog:search' %}">
+                  <div class="border border-gray rounded-md h-[46px] modal-search">
+                    <input type="text" name="q" class="block w-full rounded-md h-full border-none ring-0 focus:outline-none focus:ring-0" placeholder="جستجو..." />
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="flex-none flex space-x-[18px]">
+              <button type="button" class="md:w-[56px] md:h-[56px] h-10 w-10 ml-4 rounded bg-[#F8F8F8] flex flex-col items-center justify-center modal-trigger">
+                <img src="{% static 'assets/images/svg/search.svg' %}" alt="جستجو" />
+              </button>
+              <div class="block lg:hidden">
+                <button type="button" class="text-3xl md:w-[56px] ml-4 h-10 w-10 md:h-[56px] rounded bg-[#F8F8F8] flex flex-col items-center justify-center menu-click">
+                  <iconify-icon icon="cil:hamburger-menu" rotate="180deg"></iconify-icon>
+                </button>
+              </div>
+              <div class="hidden lg:block">
+                <a href="{% url 'blog:contact' %}" class="btn btn-primary py-[15px] px-8">تماس با ما</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:hidden block mt-4">
+          <form method="get" action="{% url 'blog:search' %}">
+            <div class="border border-gray rounded-md h-[46px] modal-search">
+              <input type="text" name="q" class="block w-full rounded-md h-full border-none ring-0 focus:outline-none focus:ring-0" placeholder="جستجو..." />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-----------------------------------header---------------------------------------------->
+
+  <!-----------------------------------mobile-menu---------------------------------------------->
+  <div class="openmobile-menu fixed top-0 h-screen pt-10 pb-6 bg-white shadow-box2 w-[320px] overflow-y-auto flex flex-col z-[999]">
+    <div class="flex justify-between px-6 flex-none">
+      <a href="{% url 'blog:home' %}" class="brand-logo flex-none mr-10">
+        <img src="{% static 'assets/images/logo/madrese-elmieh-hazrat-maryam.svg' %}" alt="لوگوی مدرسه علمیه" />
+      </a>
+      <span class="text-3xl text-black cursor-pointer rt-mobile-menu-close">
+        <iconify-icon icon="fe:close"></iconify-icon>
+      </span>
+    </div>
+    <div class="mobile-menu mt-6 flex-1">
+      <ul class="menu-active-classes">
+        <li>
+          <a href="{% url 'blog:home' %}">صفحه اصلی</a>
+        </li>
+        <li>
+          <a href="{% url 'blog:about' %}">درباره ما</a>
+        </li>
+        <li>
+          <a href="{% url 'blog:blog' %}">وبلاگ</a>
+        </li>
+        <li>
+          <a href="{% url 'blog:courses' %}">آشیانه جوان</a>
+        </li>
+        <li>
+          <a href="{% url 'blog:contact' %}">تماس با ما</a>
+        </li>
+      </ul>
+    </div>
+    <div class="flex-none pb-4">
+      <div class="text-center text-black font-semibold mb-2">ما را دنبال کنید</div>
+      <ul class="flex space-x-4 justify-center">
+        <li><a href="#" class="flex h-10 w-10"><img src="{% static 'assets/images/icon/fb.svg' %}" alt="فیسبوک" /></a></li>
+        <li><a href="#" class="flex h-10 w-10"><img src="{% static 'assets/images/icon/tw.svg' %}" alt="توییتر" /></a></li>
+        <li><a href="#" class="flex h-10 w-10"><img src="{% static 'assets/images/icon/pn.svg' %}" alt="پینترست" /></a></li>
+        <li><a href="#" class="flex h-10 w-10"><img src="{% static 'assets/images/icon/ins.svg' %}" alt="اینستاگرام" /></a></li>
+      </ul>
+    </div>
+  </div>
+  <!-----------------------------------mobile-menu---------------------------------------------->
+
+  {% block content %}{% endblock %}
+
+  <!-----------------------------------startfooter---------------------------------------------->
+  <footer class="bg-black bg-[url('../images/all-img/footer-bg-1.png')] bg-cover bg-center bg-no-repeat">
+    <div class="section-padding container">
+      <div class="grid grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
+        <div class="single-footer">
+          <div class="lg:max-w-[270px]">
+            <a href="{% url 'blog:home' %}" class="mb-10 block">
+              <img src="{% static 'assets/images/logo/faviconlogo.png' %}" alt="لوگو مدرسه علمیه" class="w-[170px] h-auto" />
+            </a>
+            <p>حوزه علمیه حضرت مریم ویژه بانوان افغانستانی در قم</p>
+            <ul class="flex space-x-4 pt-8">
+              <li>
+                <a href="#" class="flex h-12 w-12 flex-col items-center justify-center rounded bg-white bg-opacity-[0.08] text-2xl text-white transition hover:bg-primary hover:text-white">
+                  <iconify-icon icon="bxl:facebook"></iconify-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex h-12 w-12 flex-col items-center justify-center rounded bg-white bg-opacity-[0.08] text-2xl text-white transition hover:bg-primary hover:text-white">
+                  <iconify-icon icon="bxl:twitter"></iconify-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex h-12 w-12 flex-col items-center justify-center rounded bg-white bg-opacity-[0.08] text-2xl text-white transition hover:bg-primary hover:text-white">
+                  <iconify-icon icon="bxl:linkedin"></iconify-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex h-12 w-12 flex-col items-center justify-center rounded bg-white bg-opacity-[0.08] text-2xl text-white transition hover:bg-primary hover:text-white">
+                  <iconify-icon icon="bxl:instagram"></iconify-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="single-footer">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="flex-1 lg:flex-none md:ml-[80px]">
+              <h4 class="mb-8 text-2xl font-bold text-white">دسترسی سریع</h4>
+              <ul class="list-item space-y-5">
+                <li><a href="{% url 'blog:home' %}">خانه</a></li>
+                <li><a href="{% url 'blog:about' %}">درباره ما</a></li>
+                <li><a href="{% url 'blog:courses' %}">آشیانه جوان</a></li>
+                <li><a href="{% url 'blog:blog' %}">وبلاگ</a></li>
+                <li><a href="{% url 'blog:contact' %}">تماس با ما</a></li>
+              </ul>
+            </div>
+            <div class="flex-1 lg:flex-none">
+              <h4 class="mb-8 text-2xl font-bold text-white">اطلاعات تماس</h4>
+              <ul class="list-item space-y-5">
+                <li>
+                  <a>آدرس:</a>
+                  <br>
+                  <a href="#">قم، خیابان دورشهر،</a>
+                  <br>
+                  <a>کوچه ۹، پلاک ۱۶</a>
+                </li>
+                <li>
+                  <a href="#">تلفن:</a> <br>
+                  <a href="#">۰۹۰۲۶۰۹۱۲۷۴</a>
+                </li>
+                <li>
+                  <a href="#">کانال ایتا: @Hazrat_Maryam_qom</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="single-footer">
+          <h4 class="mb-8 text-2xl font-bold text-white">خبرنامه</h4>
+          <div class="mb-8">
+            برای دریافت آخرین اخبار، برنامه‌ها و مقالات مدرسه،
+            <span class="text-primary underline">ایمیل</span>
+            خود را وارد کنید.
+          </div>
+          <div class="mb-4 flex items-center rounded-md bg-white py-[10px] pl-[10px] pl-6 shadow-e1 fd">
+            <div class="flex-1">
+              <input type="text" placeholder="ایمیل خود را وارد کنید ..." class="border-none focus:ring-0" />
+            </div>
+            <div class="flex-none">
+              <span><img src="{% static 'assets/images/icon/mail.svg' %}" alt="ایمیل" /></span>
+            </div>
+          </div>
+          <button class="btn btn-primary block w-full text-center">اشتراک</button>
+        </div>
+      </div>
+    </div>
+    <div class="container border-t border-white border-opacity-[0.1] py-8 text-center text-base">
+      &copy; تمامی حقوق محفوظ است 2026
+    </div>
+  </footer>
+  <!-----------------------------------endfooter---------------------------------------------->
+
+  <div class="rt-mobile-menu-overlay"></div>
+
+  <script src="{% static 'assets/js/popper.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+  <script src="{% static 'assets/js/rt-plugins.js' %}"></script>
+  <script src="https://unpkg.com/phosphor-icons"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="{% static 'assets/js/app.min.js' %}"></script>
+<!<script src="{% static 'assets/js/app.js' %}"></script>>
+  <script src="{% static 'assets/js/custom.js' %}"></script>
+  {% block script %}{% endblock %}
+</body>
+
+</html>

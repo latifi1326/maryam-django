@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+{% load pagination_tags %}
+
+{% block title %} وبلاگ مدرسه علمیه {% endblock %}
+
+{% block content %}
+
+  <div class="breadcrumbs section-padding bg-cover bg-center bg-no-repeat"
+    style="background-image: url('{% static "assets/images/all-img/BackgroundH.png" %}');">
+    <div class="container text-center">
+      <h2>وبلاگ مدرسه علمیه حضرت مریم (س)</h2>
+      <nav>
+        <ol class="flex items-center justify-center space-x-3">
+          <li class="breadcrumb-item">
+            <a href="{% url 'blog:home' %}">صفحه اصلی</a>
+          </li>
+          <li class="breadcrumb-item">-</li>
+          <li class="text-primary">وبلاگ</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <div class="nav-tab-wrapper tabs section-padding">
+    <div class="container">
+      <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
+        {% for post in posts %}
+          <div class="w-full">
+            {% include 'blog/partials/blog-card.html' with post=post show_meta=True %}
+          </div>
+        {% empty %}
+          <div class="col-span-3 text-center py-10">
+            <p>هنوز مطلبی منتشر نشده است.</p>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if posts.has_other_pages %}
+  <div class="pagination mt-14">
+    <ul class="flex justify-center items-center space-x-3 space-x-reverse">
+
+      {# ---- دکمه قبلی ---- #}
+      <li class="inline-flex">
+        {% if posts.has_previous %}
+          <a href="?{% url_replace page=posts.previous_page_number %}"
+             class="flex w-12 h-12 flex-col items-center justify-center bg-[#ECECEC] rounded font-semibold hover:bg-primary hover:text-white transition">
+            <iconify-icon icon="heroicons:chevron-double-right-20-solid" class="text-2xl"></iconify-icon>
+          </a>
+        {% else %}
+          <span class="flex w-12 h-12 flex-col items-center justify-center bg-[#ECECEC] rounded font-semibold opacity-40 cursor-not-allowed">
+            <iconify-icon icon="heroicons:chevron-double-right-20-solid" class="text-2xl"></iconify-icon>
+          </span>
+        {% endif %}
+      </li>
+
+      {# ---- شماره صفحات ---- #}
+      {% for num in posts.paginator.page_range %}
+        {% if posts.number == num %}
+          <li class="inline-flex">
+            <span class="flex w-12 h-12 flex-col items-center justify-center bg-primary text-white rounded font-semibold">
+              {{ num }}
+            </span>
+          </li>
+        {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+          <li class="inline-flex">
+            <a href="?{% url_replace page=num %}"
+               class="flex w-12 h-12 flex-col items-center justify-center bg-[#ECECEC] rounded font-semibold hover:bg-primary hover:text-white transition">
+              {{ num }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {# ---- دکمه بعدی ---- #}
+      <li class="inline-flex">
+        {% if posts.has_next %}
+          <a href="?{% url_replace page=posts.next_page_number %}"
+             class="flex w-12 h-12 flex-col items-center justify-center bg-[#ECECEC] rounded font-semibold hover:bg-primary hover:text-white transition">
+            <iconify-icon icon="heroicons:chevron-double-left-20-solid" class="text-2xl"></iconify-icon>
+          </a>
+        {% else %}
+          <span class="flex w-12 h-12 flex-col items-center justify-center bg-[#ECECEC] rounded font-semibold opacity-40 cursor-not-allowed select-none">
+            <iconify-icon icon="heroicons:chevron-double-left-20-solid" class="text-2xl"></iconify-icon>
+          </span>
+        {% endif %}
+      </li>
+
+    </ul>
+  </div>
+{% endif %}
+    </div>
+  </div>
+
+{% endblock %}

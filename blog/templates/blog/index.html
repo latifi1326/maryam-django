@@ -1,0 +1,449 @@
+{% extends "base.html" %}
+{% load static %}
+{% load jalali_filter %}  
+{% block title %} مدرسه علمیه حضرت مریم (س) {% endblock %}
+
+{% block content %}
+   <!-- ==================== مناسبت روز / پیام انگیزشی ==================== -->
+   
+  <!-- ==================== مناسبت روز / آیه امروز ==================== -->
+  {% if occasion or motivation %}
+
+  
+
+  <div class="daily-section">
+    <div class="container">
+      <div class="daily-card">
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+          <clipPath id="dailyCurve" clipPathUnits="objectBoundingBox">
+            <path d="M0,0 L0.86,0 C0.98,0.12 0.99,0.6 1,1 L0,1 Z"/>
+          </clipPath>
+        </svg>
+
+        <iconify-icon class="daily-mandala" icon="ph:flower-lotus-thin"></iconify-icon>
+        <svg class="daily-ornament" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M12 2c2 3 2 7 0 10-2-3-2-7 0-10zM12 12c2 3 2 7 0 10-2-3-2-7 0-10zM2 12c3-2 7-2 10 0-3 2-7 2-10 0zM12 12c3-2 7-2 10 0-3 2-7 2-10 0z"/>
+        </svg>
+
+        <div class="daily-text">
+          <span class="daily-date">
+            <iconify-icon icon="lucide:sun"></iconify-icon>
+            <span>امروز، <span id="dailyJalali"></span></span>
+            <span class="daily-date-sep">|</span>
+            <span id="dailyGregorian"></span>
+            <span class="daily-date-sep">|</span>
+            <span id="dailyHijri"></span>
+          </span>
+
+          <div class="daily-content">
+            {% if occasion %}
+              <div class="daily-label">
+                <iconify-icon icon="lucide:calendar-days"></iconify-icon>
+                مناسبت امروز
+              </div>
+              <h3 class="daily-title">{{ occasion.title }}</h3>
+              <p class="daily-desc">{{ occasion.description }}</p>
+            {% else %}
+              <div class="daily-label">
+                <iconify-icon icon="lucide:droplet"></iconify-icon>
+                 کلام روز
+              </div>
+              <h3 class="daily-title">«{{ motivation.text }}»</h3>
+            {% endif %}
+            <div class="daily-footer">
+              {% if occasion %}
+                {{ occasion.footer_text|default:"مدرسه علمیه حضرت مریم (س)" }}
+              {% elif motivation %}
+                {{ motivation.footer_text|default:"مدرسه علمیه حضرت مریم (س)" }}
+              {% else %}
+                مدرسه علمیه حضرت مریم (س)
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="daily-media">
+          {# عکس اختصاصی هر مدل؛ اگر عکس نداشت، عکس پیش‌فرض #}
+          <div class="daily-photo"
+              style="background-image:url('{% if occasion %}{% if occasion.image %}{{ occasion.image.url }}{% else %}{% static 'assets/images/banner/haram.png' %}{% endif %}{% elif motivation.image %}{{ motivation.image.url }}{% else %}{% static 'assets/images/banner/haram.png' %}{% endif %}');"></div>
+          <svg class="daily-line" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M85.5 0 C98 12 99.5 60 100 100" fill="none" stroke="#e2c58f" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var now = new Date();
+      document.getElementById('dailyJalali').textContent =
+        new Intl.DateTimeFormat('fa-IR-u-ca-persian', {day:'numeric', month:'long'}).format(now);
+      document.getElementById('dailyGregorian').textContent =
+        new Intl.DateTimeFormat('fa-IR-u-ca-gregory', {day:'numeric', month:'long', year:'numeric'}).format(now);
+      document.getElementById('dailyHijri').textContent =
+        new Intl.DateTimeFormat('fa-IR-u-ca-islamic-umalqura', {day:'numeric', month:'long', year:'numeric'}).format(now);
+    })();
+  </script>
+  {% endif %}
+  
+  <!-- ==================== بنر اصلی ==================== -->
+  <section class="xl:min-h-screen bg-[url('../images/banner/3.png')] bg-no-repeat bg-center overflow-hidden">
+    <div class="container relative">
+      <div class="xl:max-w-[570px] lg:max-w-[770px] xl:py-[174px] lg:py-28 md:py-20 py-14">
+        <h2>
+          در مسیر علم و معرفت،
+          <br>
+          <span class="text-secondary inline-block bg-[url('../images/banner/shape.svg')] bg-no-repeat bg-bottom">
+            همراه شما هستیم
+          </span>
+        </h2>
+        <div class="plain-text text-gray leading-[30px] mt-8 mb-14">
+          حوزه علمیه حضرت مریم (س) با تکیه بر معارف قرآن و اهل بیت (ع)، بستری برای رشد علمی، فرهنگی و تربیتی بانوان افغانستانی فراهم کرده است.
+        </div>
+        <div class="md:flex md:space-x-4 space-y-3 md:space-y-0">
+          <a href="{% url 'blog:about' %}" class="btn btn-primary">آشنایی با مدرسه</a>
+        </div>
+      </div>
+      <div class="imge-box absolute left-[-60px] top-1/2 -translate-y-1/2 hidden xl:block">
+        <img src="{% static 'assets/images/banner/haram.png' %}" alt="تصویر بنر" class="rounded-lg" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== بخش درباره مدرسه ==================== -->
+  <div class="about-area section-padding-top pb-16 relative z-[1]">
+    <div class="absolute right-[7%] top-[20%] z-[-1] hidden xl:block">
+      <img src="{% static 'assets/images/icon/h.svg' %}" alt="" />
+    </div>
+    <div class="container">
+      <div class="grid grid-cols-12 xl:gap-[70px] lg:gap-10 gap-6">
+        <div class="xl:col-span-7 lg:col-span-6 col-span-12">
+          <img src="{% static 'assets/images/all-img/houzehBulding.png' %}" alt="درباره مدرسه" />
+        </div>
+        <div class="xl:col-span-5 lg:col-span-6 col-span-12">
+          <div class="mini-title">درباره مدرسه</div>
+          <h4 class="column-title">
+            در مسیر علم و معرفت،
+            <span class="shape-bg">گامی استوار</span>
+            بردارید.
+          </h4>
+          <div>
+            حوزه علمیه حضرت مریم (س) شعبه قم، با هدف تربیت بانوان متعهد و فرهیخته، بستری برای رشد علمی، فرهنگی و تربیتی بانوان افغانستانی فراهم کرده است.
+          </div>
+          <ul class="list-item space-y-6 pt-8">
+            <li class="flex">
+              <div class="flex-none ml-6">
+                <div class="h-20 w-20 rounded-full bg-white shadow-box10 flex flex-col justify-center items-center">
+                  <img src="{% static 'assets/images/icon/video.svg' %}" alt="" class="" />
+                </div>
+              </div>
+              <div class="flex-1">
+                <h4 class="text-xl mb-1">آموزش تخصصی معارف اسلامی</h4>
+                <div>کلاس‌های حضوری و آنلاین با بهره‌گیری از اساتید مجرب حوزه و دانشگاه</div>
+              </div>
+            </li>
+            <li class="flex">
+              <div class="flex-none ml-6">
+                <div class="h-20 w-20 rounded-full bg-white shadow-box10 flex flex-col justify-center items-center">
+                  <img src="{% static 'assets/images/icon/web-white.svg' %}" alt="" />
+                </div>
+              </div>
+              <div class="flex-1">
+                <h4 class="text-xl mb-1">همراهی علمی و فرهنگی</h4>
+                <div>برنامه‌های متنوع فرهنگی، نشست‌های تخصصی و اردوهای تربیتی</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ==================== آخرین مطالب وبلاگ ==================== -->
+  <div id="blog-section" class="section-padding bg-[url('../images/all-img/section-bg-11.png')] bg-cover bg-no-repeat">
+    <div class="container">
+      <div class="flex items-center flex-wrap flex-y-4">
+        <div class="flex-1">
+          <div class="mini-title">آخرین‌ها !!!</div>
+          <div class="column-title">
+            آخرین رویدادهای
+            <span class="shape-bg">حوزه</span>
+          </div>
+        </div>
+        <div class="flex-none">
+          <ul class="filter-list flex flex-wrap items-center">
+            <li data-filter="*" class="active tipy-info ml-4 last:ml-0" data-tippy-content="جدید">مشاهده همه</li>
+            {% for cat in categories %}
+              <li data-filter=".cat-{{ cat.slug }}" class="ml-4 last:ml-0">{{ cat.name }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px] pt-10">
+          {% for post in latest_posts %}
+            <div class="w-full">
+              {% include 'blog/partials/blog-card.html' with post=post %}
+            </div>
+          {% empty %}
+            <div class="col-span-3 text-center py-10">
+              <p>هنوز مطلبی منتشر نشده است.</p>
+            </div>
+          {% endfor %}
+        </div>
+      <div class="text-center lg:pt-16 pt-10">
+        <a href="{% url 'blog:blog' %}" class="btn btn-primary">رفتن به وبلاگ</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== کادر علمی و آموزشی ==================== -->
+  <div class="section-padding">
+    <div class="container">
+      <div class="text-center">
+        <div class="mini-title">کادر علمی و آموزشی</div>
+        <div class="column-title">
+          اساتید و همراهان
+          <span class="shape-bg">مدرسه</span>
+        </div>
+      </div>
+      <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7 pt-10">
+        {% for member in team_members %}
+          {% include 'blog/partials/team-card.html' with member=member %}
+        {% empty %}
+          <div class="col-span-4 text-center py-10">
+            <p>هنوز عضوی از تیم ثبت نشده است.</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== نظرات طلاب ==================== -->
+  <div class="section-padding bg-[url('../images/all-img/section-bg-12.png')] bg-no-repeat bg-cover">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 grid-cols-1 xl:gap-[60px] gap-6">
+        <div>
+          <div class="swiper testimonial-image-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="xl:h-[593px] lg:h-[400px] h-[150px] rounded-md">
+                  <img src="{% static 'assets/images/all-img/fazaeHouze.jpg' %}" class="object-cover w-full h-full rounded-md">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="xl:h-[593px] lg:h-[400px] h-[150px] rounded-md">
+                  <img src="{% static 'assets/images/all-img/fazaeHouze.jpg' %}" class="object-cover w-full h-full rounded-md">
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="xl:h-[593px] lg:h-[400px] h-[150px] rounded-md">
+                  <img src="{% static 'assets/images/all-img/fazaeHouze.jpg' %}" class="object-cover w-full h-full rounded-md">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="mini-title">نظرات طلاب</div>
+          <h4 class="column-title">
+            تجربه طلاب از
+            <span class="shape-bg text-black">حضور در مدرسه</span>
+          </h4>
+          <div class="swiper testimonial-text-slider mt-10">
+            <div class="swiper-wrapper">
+              {% for testimonial in testimonials %}
+                <div class="swiper-slide">
+                  <h3 class="text-2xl font-bold text-black mb-8">"{{ testimonial.title }}"</h3>
+                  <div class="mb-8">
+                    {{ testimonial.message }}
+                  </div>
+                  <span class="block font-semibold text-black mb-1">{{ testimonial.name }}</span>
+                  <span class="block font-semibold text-primary">{{ testimonial.role }}</span>
+                </div>
+              {% empty %}
+                <div class="swiper-slide">
+                  <p class="text-center text-gray-500">هنوز نظری ثبت نشده است.</p>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="flex lg:mt-10 mt-8 gap-5">
+            <button class="lg:h-[64px] lg:w-[64px] h-12 w-12 rounded-md bg-white shadow-box text-primary testimonial-next">
+              <iconify-icon icon="heroicons:arrow-right-20-solid"></iconify-icon>
+            </button>
+            <button class="lg:h-[64px] lg:w-[64px] h-12 w-12 rounded-md bg-white shadow-box text-primary testimonial-prev">
+              <iconify-icon icon="heroicons:arrow-left-20-solid"></iconify-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== مناسبت‌ها و برنامه‌های پیش‌رو (Dynamic) ==================== -->
+  <div class="section-padding bg-white bg-[url('../images/all-img/section-bg-13.png')] bg-no-repeat">
+    <div class="container">
+      <div class="text-center mb-14">
+        <div class="mini-title">برنامه‌های مدرسه</div>
+        <div class="column-title">
+          مناسبت‌ها و
+          <span class="shape-bg">برنامه‌های پیش‌رو</span>
+        </div>
+      </div>
+        <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-[30px]">
+          {% for project in featured_projects %}
+            <div class="w-full">
+              {% include 'blog/partials/project-card.html' with project=project %}
+            </div>
+          {% empty %}
+            <div class="col-span-3 text-center py-10">
+              <p>هنوز برنامه‌ای ثبت نشده است.</p>
+            </div>
+          {% endfor %}
+        </div>
+    </div>
+  </div>
+
+  <!-- ==================== دعوت به همکاری + ثبت‌نام ==================== -->
+  <div class="lg:pt-10 section-padding-bottom bg-white bg-[url('../images/all-img/section-bg-14.png')] bg-center bg-no-repeat bg-cover">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 grid-cols-1 gap-7">
+        <div class="bg-[url('../images/all-img/jamkaran.jpg')] bg-cover bg-no-repeat p-10 rounded-md">
+          <div class="max-w-[337px]">
+            <div class="mini-title">همراهی با ما</div>
+            <div class="text-[34px] text-black leading-[51px]">
+              دعوت به
+              <br>
+              <span class="shape-bg">همکاری علمی</span>
+            </div>
+            <div class="mt-6 mb-12">از اساتید و بانوان متخصص حوزه و دانشگاه برای همکاری آموزشی و فرهنگی دعوت می‌کنیم، با ما همراه شوید.</div>
+            <a href="{% url 'blog:contact' %}" class="btn btn-primary">ارسال درخواست</a>
+          </div>
+        </div>
+        <div class="bg-[url('../images/all-img/jamkaran.jpg')] bg-no-repeat p-10 bg-cover rounded-md">
+          <div class="max-w-[337px]">
+            <div class="mini-title">آغاز مسیر</div>
+            <div class="text-[34px] text-black leading-[51px]">
+              ثبت‌نام در
+              <span class="shape-bg">دوره های مدرسه</span>
+            </div>
+            <div class="mt-6 mb-12">در دوره‌های تخصصی معارف اسلامی، قرآن و حدیث، و برنامه‌های فرهنگی مدرسه ثبت‌نام کنید.</div>
+            <a href="{% url 'blog:contact' %}" class="btn btn-black">اطلاعات بیشتر</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== سوالات متداول ==================== -->
+  <div class="section-padding bg-white bg-[url('../images/all-img/section-bg-15.png')] bg-bottom bg-cover bg-no-repeat">
+    <div class="container">
+      <div class="grid lg:grid-cols-2 grid-cols-1 gap-[30px]">
+        <div>
+          <div class="mini-title">پرسش‌های پرتکرار</div>
+          <div class="column-title">
+            سوالات
+            <span class="shape-bg">متداول</span>
+          </div>
+          <ul class="list accrodains space-y-[30px] lg:max-w-[470px]">
+            <li>
+              <button type="button" class="accrodain-button">
+                <span>شرایط ثبت‌نام در مدرسه چیست؟</span>
+                <span class="icon-pm"></span>
+              </button>
+              <div class="content hidden">
+                پاسخ: بانوان افغانستانی علاقه‌مند به تحصیل علوم دینی می‌توانند با ارائه مدارک هویتی و مدرک تحصیلی قبلی، در دوره‌های مدرسه ثبت‌نام کنند. برای اطلاعات بیشتر با شماره تماس مدرسه در ارتباط باشید.
+              </div>
+            </li>
+            <li>
+              <button type="button" class="accrodain-button">
+                <span>دوره‌ها به چه صورت برگزار می‌شوند؟</span>
+                <span class="icon-pm"></span>
+              </button>
+              <div class="content hidden">
+                پاسخ: دوره‌ها به دو صورت حضوری و آنلاین برگزار می‌شوند. کلاس‌های حضوری در محل مدرسه (قم، دورشهر) و کلاس‌های آنلاین از طریق بسترهای ارتباطی برگزار می‌شود.
+              </div>
+            </li>
+            <li>
+              <button type="button" class="accrodain-button">
+                <span>آیا بانوان غیرافغانستانی هم می‌توانند ثبت‌نام کنند؟</span>
+                <span class="icon-pm"></span>
+              </button>
+              <div class="content hidden">
+                پاسخ: مدرسه علمیه حضرت مریم (س) عمدتاً ویژه بانوان افغانستانی است، اما برای برخی دوره‌ها و برنامه‌های فرهنگی، پذیرش بانوان سایر ملیت‌ها نیز بر اساس ظرفیت امکان‌پذیر است.
+              </div>
+            </li>
+            <li>
+              <button type="button" class="accrodain-button">
+                <span>هزینه دوره‌ها چگونه است؟</span>
+                <span class="icon-pm"></span>
+              </button>
+              <div class="content hidden">
+                پاسخ: برخی دوره‌ها رایگان و برخی دیگر با هزینه نمادین برگزار می‌شوند. جزئیات هزینه هر دوره در صفحه «دوره‌ها» اعلام می‌شود. برای حمایت مالی از مدرسه نیز می‌توانید از طریق شماره کارت اعلامی در کانال اقدام کنید.
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <img src="{% static 'assets/images/all-img/houzehBulding.png' %}" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== آخرین مقالات (Dynamic) ==================== -->
+  <div class="section-padding">
+    <div class="container">
+      <div class="text-center">
+        <div class="mini-title">وبلاگ مدرسه</div>
+        <div class="column-title">
+          نگاهی به آخرین
+          <span class="shape-bg">مقالات و مطالب</span>
+        </div>
+      </div>
+      <div class="grid xl:grid-cols-2 grid-cols-1 gap-7 pt-10">
+        {% for post in latest_articles %}
+        <div class="bg-white shadow-box7 rounded-[8px] group transition duration-150 ring-0 hover:ring-2 hover:ring-primary hover:shadow-box8 sm:flex p-4">
+          <div class="flex-none sm:ml-6 mb-4 sm:mb-0">
+            <div class="sm:w-[200px] h-[182px] rounded relative">
+              {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-full object-cover rounded" />
+              {% else %}
+                <img src="{% static 'assets/images/all-img/leilatArraghaeb.jpg' %}" alt="" class="w-full h-full object-cover rounded" />
+              {% endif %}
+            </div>
+          </div>
+          <div class="course-content flex-1">
+            <div class="mb-4">
+              <span class="inline-block text-base text-secondary bg-[#E3F9F6] font-medium rounded px-[10px] py-1">{{ post.category.name }}</span>
+            </div>
+            <h4 class="lg:text-2xl lg:leading-[36px] text-1xl mb-4 font-bold">
+              <a href="{% url 'blog:blog_single' post.slug %}" class="group-hover:text-primary transition duration-150">{{ post.title }}</a>
+            </h4>
+            <div class="flex space-x-6">
+              <a class="flex items-center space-x-2" href="{% url 'blog:blog_single' post.slug %}">
+                <img src="{% static 'assets/images/svg/calender2.svg' %}" alt="" />
+                <span>{{ post.created_at|jdate:"j F Y"   }}</span>
+              </a>
+              <a class="flex items-center space-x-2" href="#">
+                <img src="{% static 'assets/images/svg/clock2.svg' %}" alt="" />
+                <span>۴ هزار درس</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+          <div class="col-span-2 text-center py-10">
+            <p>هنوز مقاله‌ای منتشر نشده است.</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

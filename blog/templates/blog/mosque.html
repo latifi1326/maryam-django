@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} درباره هیئت حضرت خدیجه (س) - مدرسه علمیه حضرت مریم (س) {% endblock %}
+
+{% block content %}
+
+  {# ---------- Breadcrumb ---------- #}
+  <div class="breadcrumbs section-padding bg-cover bg-center bg-no-repeat"
+    style="background-image: url('{% static "assets/images/all-img/BackgroundH.png" %}');">
+    <div class="container text-center">
+      <h2>درباره هیئت حضرت خدیجه کبری (س)</h2>
+      <nav>
+        <ol class="flex items-center justify-center space-x-3">
+          <li class="breadcrumb-item">
+            <a href="{% url 'blog:home' %}">صفحه اصلی</a>
+          </li>
+          <li class="breadcrumb-item">-</li>
+          <li class="text-primary">هیئت حضرت خدیجه کبری (س)</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  {# ---------- معرفی هیئت ---------- #}
+  <div class="about-area section-padding-top pb-12">
+    <div class="container">
+      <div class="grid grid-cols-12 gap-10">
+        <div class="xl:col-span-7 lg:col-span-6 col-span-12">
+          <img src="{% static 'assets/images/all-img/Houze3.png' %}" alt="هیئت حضرت خدیجه کبری (س)" />
+        </div>
+        <div class="xl:col-span-5 lg:col-span-6 col-span-12">
+          <div class="mini-title">هیئت حضرت خدیجه کبری (س)</div>
+          <h4 class="column-title">
+            تربیت بانوان
+            <span class="shape-bg">مهدوی و نسل جوان</span>
+            در پرتو سیره حضرت خدیجه (س)
+          </h4>
+          <div class="mb-8">
+            هیئت حضرت خدیجه کبری (س) وابسته به مدرسه علمیه حضرت مریم (س) قم، با الگوگیری از سیره‌ی بانوی بزرگ اسلام، حضرت خدیجه (س)، در مسیر تربیت بانوان مؤمن، متعهد و مهدوی گام برمی‌دارد. این هیئت با برگزاری جلسات هفتگی، برنامه‌های فرهنگی و تربیتی، و ایجاد فضایی صمیمی، بستری برای رشد معنوی و اجتماعی بانوان و نسل جوان فراهم کرده است. هدف ما، پرورش نسلی است که با معرفت دینی، آماده‌ی یاری حضرت ولی‌عصر (عج) باشد.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {# ---------- چرا هیئت ما؟ ---------- #}
+  <div class="feature-area bg-[url('../images/all-img/section-bg-1.png')] bg-cover bg-no-repeat bg-center section-padding">
+    <div class="container">
+      <div class="text-center">
+        <div class="mini-title">چرا هیئت ما؟</div>
+        <div class="column-title">
+          چرا هیئت حضرت خدیجه (س)
+          <span class="shape-bg">را انتخاب کنید</span>
+        </div>
+      </div>
+      <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 pt-10">
+        <div class="bg-white shadow-box rounded-[8px] p-10 group hover:bg-primary transition duration-150 hover:-translate-y-1">
+          <div class="h-[72px] w-[72px] rounded-full flex flex-col items-center justify-center text-secondary bg-green-paste mb-8 text-5xl group-hover:bg-black group-hover:bg-opacity-[0.1] group-hover:text-white transition duration-150">
+            <iconify-icon icon="codicon:globe"></iconify-icon>
+          </div>
+          <h4 class="lg:text-2xl text-[22px] leading-[30px] mb-4 transition duration-150 group-hover:text-white">
+            جلسات هفتگی و محافل مذهبی
+          </h4>
+          <div class="transition duration-150 group-hover:text-white">
+            برگزاری جلسات هفتگی با محوریت معارف قرآن، اهل بیت (ع) و سیره‌ی حضرت خدیجه (س)، همراه با مداحی، سخنرانی و حلقه‌های گفتگو.
+          </div>
+        </div>
+
+        <div class="bg-white shadow-box rounded-[8px] p-10 group hover:bg-primary transition duration-150 hover:-translate-y-1">
+          <div class="h-[72px] w-[72px] rounded-full flex flex-col items-center justify-center text-secondary bg-green-paste mb-8 text-5xl group-hover:bg-black group-hover:bg-opacity-[0.1] group-hover:text-white transition duration-150">
+            <iconify-icon icon="healthicons:i-training-class-outline"></iconify-icon>
+          </div>
+          <h4 class="lg:text-2xl text-[22px] leading-[30px] mb-4 transition duration-150 group-hover:text-white">
+            تربیت بانوان مهدوی
+          </h4>
+          <div class="transition duration-150 group-hover:text-white">
+            برنامه‌های ویژه‌ی تربیت بانوان با محوریت انتظار، معرفت به امام زمان (عج) و آماده‌سازی نسل جوان برای ظهور.
+          </div>
+        </div>
+
+        <div class="bg-white shadow-box rounded-[8px] p-10 group hover:bg-primary transition duration-150 hover:-translate-y-1">
+          <div class="h-[72px] w-[72px] rounded-full flex flex-col items-center justify-center text-secondary bg-green-paste mb-8 text-5xl group-hover:bg-black group-hover:bg-opacity-[0.1] group-hover:text-white transition duration-150">
+            <iconify-icon icon="fluent:handshake-32-regular"></iconify-icon>
+          </div>
+          <h4 class="lg:text-2xl text-[22px] leading-[30px] mb-4 transition duration-150 group-hover:text-white">
+            همراهی نسل جوان
+          </h4>
+          <div class="transition duration-150 group-hover:text-white">
+            فضایی امن و صمیمی برای دختران و بانوان جوان، با هدف رشد معنوی، تربیت دینی و پرورش نسل مهدوی در کنار اساتید و مربیان دلسوز.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  {# ---------- نظرات شرکت‌کنندگان ---------- #}
+  <div class="section-padding bg-[url('../images/all-img/section-bg-16.png')] bg-cover bg-no-repeat">
+    <div class="container">
+      <div class="grid grid-cols-12 lg:gap-10 gap-6">
+        <div class="xl:col-span-7 lg:col-span-6 col-span-12">
+          <img src="{% static 'assets/images/all-img/houze-roshana.jpg' %}" alt="" draggable="false" />
+        </div>
+        <div class="xl:col-span-5 lg:col-span-6 col-span-12 flex flex-col justify-center">
+          <div class="mini-title">نظرات بانوان</div>
+          <h4 class="column-title">
+            بانوان هیئت ما
+            <span class="shape-bg">چه می‌گویند</span>
+            درباره ما
+          </h4>
+          <div>
+            تجربه‌ی بانوان و دختران جوان از حضور در جلسات هفتگی، برنامه‌های تربیتی و محافل مهدوی هیئت حضرت خدیجه (س).
+          </div>
+          <div class="mt-12">
+            <a href="{% url 'blog:blog' %}" class="btn btn-primary">آشنایی با حوزه حضرت مریم (س) </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  {# ---------- سوالات متداول ---------- #}
+  
+
+{% endblock %}

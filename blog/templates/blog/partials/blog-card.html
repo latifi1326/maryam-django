@@ -1,0 +1,38 @@
+{% load static %}
+{% load jalali_filter %}
+
+
+<div class="grid-item cat-{{ post.category.slug }} blog-card-equal">
+  <div class="bg-white shadow-box2 rounded-[8px] transition duration-100 hover:shadow-sm block h-full">
+    <a href="{% url 'blog:blog_single' post.slug %}" class="flex flex-col h-full">
+      <div class="course-thumb h-[260px] rounded-t-[8px] relative flex-shrink-0">
+        {% if post.image %}
+          <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-full object-cover rounded-t-[8px]" />
+        {% else %}
+          <img src="{% static 'assets/images/all-img/leilatArraghaeb.jpg' %}" alt="" class="w-full h-full object-cover rounded-t-[8px]" />
+        {% endif %}
+        <span class="bg-secondary py-1 px-3 text-lg font-semibold rounded text-white absolute right-6 top-6">{{ post.category.name }}</span>
+      </div>
+      <div class="course-content p-8 flex-1 flex flex-col justify-between">
+        <div>
+          {% if show_meta %}
+            <div class="flex lg:space-x-10 space-x-5 mb-5">
+              <span class="flex items-center space-x-2">
+                <img src="{% static 'assets/images/svg/admin.svg' %}" alt="" />
+                <span>{{ post.author }}</span>
+              </span>
+              <span class="flex items-center space-x-2">
+                <img src="{% static 'assets/images/svg/calender.svg' %}" alt="" />
+                <span>{{ post.created_at|jdate:"j F Y" }}</span>
+              </span>
+            </div>
+          {% endif %}
+          <h4 class="text-xl mb-0 font-bold leading-6">{{ post.title }}</h4>
+        </div>
+        <span class="blog-read-more inline-flex items-center mt-5 text-primary font-semibold transition-all duration-300">
+          مطالعه بیشتر
+        </span>
+      </div>
+    </a>
+  </div>
+</div>

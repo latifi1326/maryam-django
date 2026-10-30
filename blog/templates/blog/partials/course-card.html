@@ -1,0 +1,37 @@
+{% load static %}
+
+<div class="bg-white shadow-box5 rounded-[8px] transition duration-100 hover:shadow-box3 course-card-equal">
+  <div class="course-thumb h-[297px] rounded-t-[8px] relative">
+    {% if course.image %}
+      <img src="{{ course.image.url }}" alt="{{ course.title }}" class="w-full h-full object-cover rounded-t-[8px]" />
+    {% else %}
+      <img src="{% static 'assets/images/all-img/fannavari.jpg' %}" alt="" class="w-full h-full object-cover rounded-t-[8px]" />
+    {% endif %}
+  </div>
+  <div class="course-content p-8 flex flex-col" style="min-height: 280px;">
+    <h4 class="text-xl mb-5 font-bold">
+      <a href="{% url 'blog:course_single' course.slug %}" class="hover:text-primary transition duration-150">
+        {{ course.title }}
+      </a>
+    </h4>
+    <ul class="list space-y-3 mb-6 flex-1">
+      {% if course.level %}
+        <li class="flex space-x-2">
+          <span class="text-lg text-secondary ml-2">
+            <iconify-icon icon="heroicons:academic-cap"></iconify-icon>
+          </span>
+          <span>{{ course.level }}</span>
+        </li>
+      {% endif %}
+      {% if course.schedule %}
+        <li class="flex space-x-2">
+          <span class="text-lg text-secondary ml-2">
+            <iconify-icon icon="heroicons:user-group"></iconify-icon>
+          </span>
+          <span>{{ course.schedule }}</span>
+        </li>
+      {% endif %}
+    </ul>
+    <a href="{% url 'blog:course_single' course.slug %}" class="btn inline-block px-8 py-[11px] bg-black text-white hover:bg-primary mt-auto" style="width: auto;">جزئیات دوره</a>
+  </div>
+</div>
